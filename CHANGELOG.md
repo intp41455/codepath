@@ -8,7 +8,12 @@
 
 ## [2.0.0] - 2026-09-22
 
-面向零基础学习者的中文实践课堂 v2。发布站点：`codepath-intpj-0922.bright-melon-8461.chatgpt.site`。
+面向零基础学习者的中文实践课堂 v2。
+
+- **公开仓库**：[intp41455/codepath](https://github.com/intp41455/codepath)（MIT）。
+- **在线托管**：[GitHub Pages](https://intp41455.github.io/codepath/)（根目录跳板重定向到 `dist/`）。
+- 内部私有发布（ChatGPT Sites）：`codepath-intpj-0922.bright-melon-8461.chatgpt.site`，保留仅所有者访问。
+
 
 ### 新增（Added）
 - **4 条新课程线**：JavaScript 12 节、TypeScript 8 节、Linux 10 节、智能体系统 12 节。

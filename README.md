@@ -5,6 +5,9 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![test](https://img.shields.io/badge/test-60%2F60%20node%20%7C%2051%20python%2Fsqlite%20reference-green.svg)](tests/regression.cjs)
 [![no-build](https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg)](#本地运行)
+[![live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen.svg)](https://intp41455.github.io/codepath/)
+
+> **在线体验**：[https://intp41455.github.io/codepath/](https://intp41455.github.io/codepath/)（GitHub Pages 托管，首次运行 Python/SQL 需联网加载浏览器执行环境）
 
 **17 条学习路径 · 129 个小节 · 14 个综合项目 · 14 个每日挑战**
 
