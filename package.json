@@ -1,0 +1,34 @@
+{
+  "name": "codepath",
+  "version": "2.0.0",
+  "description": "循码 Codepath —— 面向零基础学习者的中文编程实践课堂：17 条学习路径、129 个小节、14 个综合项目，浏览器内真实运行 Python / SQL / JS / TS。",
+  "license": "MIT",
+  "author": "intp41455",
+  "homepage": "https://github.com/intp41455/codepath",
+  "private": false,
+  "keywords": [
+    "编程教学",
+    "零基础",
+    "Python",
+    "SQL",
+    "JavaScript",
+    "TypeScript",
+    "Linux",
+    "智能体",
+    "多智能体",
+    "课程",
+    "static-site",
+    "educational",
+    "programming-curriculum"
+  ],
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "test": "node --test tests/regression.cjs",
+    "test:python": "python tests/exercises.py && python tests/runtime-python.py",
+    "test:all": "node --test tests/regression.cjs && python tests/exercises.py && python tests/runtime-python.py",
+    "build:test-bundle": "python scripts/build-test-bundle.py"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

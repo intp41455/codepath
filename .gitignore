@@ -1,0 +1,40 @@
+# 循码 Codepath 仓库 .gitignore
+# 本项目是纯静态站点，构建产物已入库（dist/），一般不需要忽略。
+# 以下规则用于避免本机运行、开发与临时文件污染仓库。
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Node / 工具运行时
+node_modules/
+.npm/
+
+# 由脚本重新生成、体积较大的可再生产物（如需重新生成用 scripts/build-test-bundle.py）
+# 注意：dist/codepath-tests.zip 是随站点分发的可下载测试包，默认保留在库中；
+# 只有在明确要忽略它时才取消下面这行的注释。
+# dist/codepath-tests.zip
+
+# 编辑器与操作系统
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 日志与本地临时输出
+*.log
+npm-debug.log*
+tmp/
+work/
+
+# 本地学习备份（页面导出的 JSON），避免误提交个人数据
+*.backup.json
+学习备份*.json
