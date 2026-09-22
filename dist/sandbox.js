@@ -6,8 +6,20 @@ class IsolatedRunner{
     let source=await fetch(isJS?'js-runner.js':'runner.js').then(r=>{if(!r.ok)throw Error('运行器下载失败');return r.text()});
     if(payload.kind==='typescript'){
       const base='vendor/typescript/';
+      const TS_CDN='https://cdn.jsdelivr.net/npm/typescript@5.9.3/lib/typescript.js';
       const names=['lib.es5.d.ts','lib.es2015.promise.d.ts','lib.decorators.d.ts','lib.decorators.legacy.d.ts'];
-      const read=async name=>{const r=await fetch(base+name);if(!r.ok)throw Error('TypeScript 文件缺失：'+name);return r.text()};
+      const read=async name=>{
+        const r=await fetch(base+name);
+        if(r.ok)return r.text();
+        if(name==='typescript.js'){
+          // 部分分发渠道（如公开仓库受网络限制）不捆绑 9MB 编译器主体，
+          // 自动回退到 jsDelivr 上同版本（5.9.3）官方构建；本地有文件时仍优先本地。
+          const c=await fetch(TS_CDN);
+          if(!c.ok)throw Error('TypeScript 文件缺失：'+name+'（本地与 CDN 均不可用，请检查网络）');
+          return c.text();
+        }
+        throw Error('TypeScript 文件缺失：'+name);
+      };
       payload={...payload,libs:Object.fromEntries(await Promise.all(names.map(async n=>[n,await read(n)])))};
       source=(await read('typescript.js'))+'\n'+source;
     }
