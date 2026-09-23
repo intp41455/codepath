@@ -31,6 +31,7 @@ const TYPES = {
   '.md': 'text/markdown; charset=utf-8',
   '.txt': 'text/plain; charset=utf-8',
   '.zip': 'application/zip',
+  '.wasm': 'application/wasm',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.ico': 'image/x-icon',
@@ -57,6 +58,8 @@ const server = http.createServer((req, res) => {
         'Content-Length': stat.size,
         // 静态站点可缓存
         'Cache-Control': 'no-cache',
+        // 沙箱 iframe（不透明源）需从本服务加载 Pyodide 等隔离资源，必须放行跨源读取
+        'Access-Control-Allow-Origin': '*',
       });
       fs.createReadStream(filePath).pipe(res);
     });

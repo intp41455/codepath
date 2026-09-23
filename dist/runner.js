@@ -1,5 +1,5 @@
 let runtime;
-async function boot(){if(runtime)return runtime;postMessage({type:'status',message:'正在准备真实 Python 环境…\n首次需要下载，后续通常会更快。'});importScripts('https://cdn.jsdelivr.net/pyodide/v0.27.7/full/pyodide.js');runtime=await loadPyodide({indexURL:'https://cdn.jsdelivr.net/pyodide/v0.27.7/full/'});return runtime}
+async function boot(){if(runtime)return runtime;postMessage({type:'status',message:'正在准备真实 Python 环境…\n首次需要下载，后续通常会更快。'});const PYODIDE_BASE='__PYODIDE_BASE__';importScripts(PYODIDE_BASE+'pyodide.js');runtime=await loadPyodide({indexURL:PYODIDE_BASE});return runtime}
 self.onmessage=async e=>{try{const py=await boot(),m=e.data;py.globals.set('_payload',JSON.stringify(m));if(m.kind==='sql')await py.loadPackage('sqlite3');postMessage({type:'executing'});const result=await py.runPythonAsync(`
 import json, io, contextlib, traceback, ast
 _m=json.loads(_payload)

@@ -7,7 +7,7 @@
 [![no-build](https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg)](#本地运行)
 [![live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen.svg)](https://intp41455.github.io/codepath/)
 
-> **在线体验**：[https://intp41455.github.io/codepath/](https://intp41455.github.io/codepath/)（GitHub Pages 托管，首次运行 Python/SQL 需联网加载浏览器执行环境）
+> **在线体验**：[https://intp41455.github.io/codepath/](https://intp41455.github.io/codepath/)（GitHub Pages 托管；Python/SQL/TS 运行环境随站点自托管，打开即可运行）
 
 **17 条学习路径 · 129 个小节 · 14 个综合项目 · 14 个每日挑战**
 
