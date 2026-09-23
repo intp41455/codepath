@@ -1,7 +1,7 @@
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const KEY='codepath-learning-v1';let state={version:1,current:'pc-01',done:{},drafts:{},notes:{},checks:{},projectChecks:{},viewedSolutions:{},projectEvidence:{},gameProgress:{},miniDone:{},wrongBook:[]};
 try{const saved=JSON.parse(localStorage.getItem(KEY)||'null');if(saved&&saved.version===1)state=LearningCore.normalize(saved,LESSONS,PROJECTS)}catch(e){}state=LearningCore.normalize(state,LESSONS,PROJECTS);let worker=null,job=null,timeout=null,route='',toastTimer;
-function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('#save-state').textContent='本机自动保存'}catch(e){$('#save-state').textContent='保存失败，请备份';toast('浏览器存储不可用，请及时备份学习进度。')}updateSide()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));$('#save-state').textContent='本机自动保存'}catch(e){$('#save-state').textContent='保存失败，请备份';toast('浏览器存储不可用，请及时备份学习进度。')}updateSide();window.CodepathAuth?.pushProgress?.(state)}
 function toast(s){$('#toast').textContent=s;$('#toast').classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('#toast').classList.remove('visible'),3200)}
 function updateSide(){const count=LESSONS.filter(l=>state.done[l.id]).length;$('#side-progress').style.width=(count/LESSONS.length*100)+'%';$('#side-count').textContent=`已完成 ${count} / ${LESSONS.length} 个小节`}
 function go(hash){if(location.hash===hash)render();else location.hash=hash}
