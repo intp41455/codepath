@@ -3,15 +3,21 @@
 > 面向零基础学习者的中文实践课堂。讲一个 → 练一个 → 测一个 → 复一个，把「看懂了」变成「我会了」。
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![test](https://img.shields.io/badge/test-60%2F60%20node%20%7C%2051%20python%2Fsqlite%20reference-green.svg)](tests/regression.cjs)
 [![no-build](https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg)](#本地运行)
-[![live](https://img.shields.io/badge/live-GitHub%20Pages-brightgreen.svg)](https://intp41455.github.io/codepath/)
 
-> **在线体验**：[https://intp41455.github.io/codepath/](https://intp41455.github.io/codepath/)（GitHub Pages 托管；Python/SQL/TS 运行环境随站点自托管，打开即可运行）
+> **在线体验**：[循码网站](https://codepath-intpj-0922.bright-melon-8461.chatgpt.site/)（首次运行 Python/SQL 需联网加载浏览器执行环境）
 
-**17 条学习路径 · 129 个小节 · 14 个综合项目 · 14 个每日挑战**
+**30 条学习路径 · 232 个小节 · 30 节先修衔接课 · 6 个游戏关卡 · 17 个综合项目 · 14 个每日挑战**
 
 课程在浏览器里真实运行 Python、SQL、JavaScript、TypeScript（Pyodide + SQLite + 真实 TS 5.9.3 编译器），并配有两套「拿证据说话」的毕业验收：接管自己的 AI 辅助项目，以及分析和修改陌生 GitHub 项目。
+
+## v4 先修与 AI 路线
+
+每个模块新增出发前衔接课、直接先修导航与进度；词典放到代码之前，概念课不再要求运行示意文字。
+新增10模块：AI数学、神经网络、深度学习、NLP、大模型部署、微调、LoRA、QLoRA、知识图谱、RAG。
+13道新Python题有行为断言和未完成答案反例；另有概念题、手算、阅读与本机任务。
+`labs/README.md` 提供解压、终端、虚拟环境、实验运行和故障检查步骤。运行 `python scripts/build-model-labs.py` 生成下载包。
+真实GPU微调和真实本地模型服务没有在本次环境实测，课程明确区分原理实验、配置阅读与真实模型实验。课程数量与XP不保证精通，需通过独立修改和项目证据检验。
 
 ## 为什么做这个项目（背景）
 
@@ -25,10 +31,10 @@
 
 ## 开始学习
 
-直接打开发布的网站，从 Python 第一课开始。右侧填写代码，点击「运行并检查」。按课程顺序完成讲解、练习与复盘，再进入实战项目。
+直接打开发布的网站，从“零号训练营”的点击、焦点与安全练习开始。右侧填写代码，点击「运行并检查」。按课程顺序完成讲解、练习与复盘，再进入实战项目。
 
-- **44 个 Python 练习** 和 **7 个 SQL 练习** 使用真实 Pyodide / SQLite 在浏览器中运行；**9 个 JavaScript、7 个 TypeScript** 在隔离环境执行。首次运行需要联网下载环境。
-- **62 个本机指导小节** 涵盖开发工具、Java、FastAPI、Spring Boot、Spring AI、Linux、源码阅读与复杂项目工程。网页提供步骤与知识检查，不代替本机编译或项目验收。
+- **67 个 Python 练习** 和 **7 个 SQL 练习** 使用真实 Pyodide / SQLite 在浏览器中运行；**9 个 JavaScript、7 个 TypeScript** 在隔离环境执行。首次运行需要联网下载环境。
+- **142 个概念或本机指导小节** 涵盖开发工具、Java、FastAPI、Spring Boot、Spring AI、Linux、源码阅读与复杂项目工程。网页提供步骤与知识检查，不代替本机编译或项目验收。
 - Agent 与多角色基础练习明确使用确定性模拟；真实模型集成在本机项目阶段进行。**网站本身没有接入聊天模型**；审核中心可运行单文件 JS/TS/Python 与业务断言、提示部分静态风险，不会自动审查整个任意仓库。
 - 课程、草稿、笔记、项目检查与毕业自评保存在当前浏览器。用页面底部的「备份学习进度」导出，再在其他浏览器导入。
 
@@ -51,8 +57,8 @@ py -m http.server 4317 --bind 127.0.0.1
 ## 运行测试（可复现）
 
 ```bash
-node --test tests/regression.cjs      # 浏览器课程断言 + 业务逻辑 + 静态规则（当前 60/60）
-python tests/exercises.py             # 44 Python + 7 SQL 参考实现（51 通过）
+node --test tests/regression.cjs      # 浏览器课程断言 + 业务逻辑 + 静态规则（当前 63/63）
+python tests/exercises.py             # 67 Python + 7 SQL 参考实现（74 通过）
 python tests/runtime-python.py        # 运行时参考 + 反例
 python scripts/build-test-bundle.py  # 重新生成 dist/codepath-tests.zip
 ```
@@ -84,7 +90,7 @@ codepath/
 └─ scripts/               # 导出 / 打包 / 本地服务脚本
 ```
 
-## 学习路径一览（17）
+## 学习路径一览（20）
 
 Python 基础 → 数据结构与算法 → SQL 与数据库 → 开发工具与工程基础 → Linux · 从终端到服务排障 → JavaScript · 网页开始行动 → TypeScript · 为代码建立约定 → FastAPI 接口开发 → Java 与面向对象 → Spring Boot 应用开发 → Spring AI 应用集成 → Agent 与检索增强 → 多 Agent 协作 → 智能体系统 · 架构与协作 → GitHub 源码阅读与分析 → AI 代码理解与接管 → 复杂项目的工程能力。
 
@@ -100,3 +106,4 @@ Python 基础 → 数据结构与算法 → SQL 与数据库 → 开发工具与
 ## 许可
 
 本项目按 [MIT 许可证](LICENSE) 开源。随仓库分发的 TypeScript 编译器保留其原有许可（`dist/vendor/typescript/LICENSE.txt`）。
+

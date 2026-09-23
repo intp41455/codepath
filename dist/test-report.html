@@ -1,3 +1,30 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>循码 · 实际测试报告</title><link rel="stylesheet" href="style.css"><body><main style="max-width:980px"><a href="index.html#home">← 回到循码</a><p class="eyebrow">VALIDATION RECORD · 2026-09-22</p><h1>测试结果与明确边界</h1><p>v2 发布前的实际本地验收记录。测试通过说明已覆盖用例符合预期，不代表没有其他缺陷。</p><section class="project-stage"><h2>已执行的自动化测试</h2><ul><li>Node：60 / 60 通过，0 失败。覆盖课程结构、JS/TS 参考解、未完成代码拒绝、类型错误、错误业务、输出限额、XP 去重、日期、备份和风险正反例。</li><li>Python / SQLite：51 个参考练习通过；10 个新增智能体算法未完成代码被拒绝。额外直接提取实际浏览器 worker 的 Python 程序，再运行 51 个参考解与 7 个反例，全部通过。</li><li>FastAPI 参考项目：5 / 5 通过，2 条依赖弃用警告。下载包不自动安装相关依赖。</li></ul><pre>node --test tests/regression.cjs
-python tests/exercises.py
-python tests/runtime-python.py</pre><a class="primary" href="codepath-tests.zip" download>下载测试包 ↓</a></section><section class="project-stage"><h2>已完成的浏览器验证</h2><ul><li>首页桌面截图正常；17 路径、每日挑战和 XP 正常展示。375px 宽度的首页、审核页、课程工作台无横向溢出；修复了新增导航导致的溢出。</li><li>课程工作台 JavaScript、TypeScript、SQLite 真实运行通过；手动停止可取消运行。审核修改代码后旧运行取消，旧结果不会覆盖新代码状态。</li><li>有效备份导入成功；无效备份被拒绝；笔记 HTML 标签作为纯文本显示；导出 JSON 可解析并含课程、草稿、笔记、每日奖励，复制回退成功。</li><li>算法挑战正确实现通过；重复提交不重复领奖。</li><li>审核中心错误加法被断言拒绝；TypeScript 类型错误被真实编译器拒绝，修复后通过。</li><li>Python 加法和两个断言通过，输出 5。</li><li>执行器中 document 为 undefined；IndexedDB 访问返回 SecurityError。</li><li>无限循环被静态规则提示，且执行超时自动终止。自动化反例验证：只有注释或未执行的断言不得判为通过。</li></ul></section><section class="project-stage"><h2>验证局限与未覆盖范围</h2><ul><li>内置浏览器未返回 Blob 下载完成事件；已验证导出 JSON 完整内容预览与复制回退。下载测试 ZIP 已在本机检查文件完整性，不把下载事件超时描述成保存成功。</li><li>静态规则可能误报漏报，不是完整安全审计；断言只验证给定样例，不用于对抗性考试认证。</li><li>未执行 Java 编译、真实 Linux 部署、真实收费模型、负载和全量供应链审计。</li><li>人工验收与毕业证据属于自评，需要复核实际项目，不能自动保证成为专家。</li></ul></section></main></body></html>
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>循码 v4 测试结果</title><link rel="stylesheet" href="style.css">
+<body><main style="max-width:980px"><a href="index.html#home">← 回到循码</a>
+<h1>v4 测试结果与验证范围</h1>
+<p>2026-09-23。本版包含30个学习模块、232个小节、17个项目；以下仅记录实际执行的验证。</p>
+<section class="project-stage"><h2>已通过的自动化检查</h2><ul>
+<li>63项Node回归：课程结构、先修图无环、各模块衔接课、JS/TS行为断言、状态与奖励。</li>
+<li>74个Python/SQLite参考练习通过；10个Agent与13个新AI未完成答案被拒绝。</li>
+<li>实际浏览器worker使用的Python执行程序：74个参考检查与7个反例通过。</li>
+<li>标准库LoRA矩阵实验：冻结底座、损失下降、独立输入、保存重载通过；零步训练负例被拒绝。</li>
+<li>标准库检索实验：证据引用、权限前置过滤、无证据、空问题、未知角色检查通过。此实验没有调用大模型或向量模型。</li>
+<li>本地模型HTTP客户端：模拟响应结构与连接失败路径通过；没有调用真实模型服务。</li>
+<li>PyTorch CPU小网络实际训练通过：初始损失2.815189，最终损失0.000250，独立合成输入损失0.000044；保存重载后预测一致。此结果只适用于本实验的合成任务。</li>
+</ul><pre>npm run test:all
+python labs/tiny_torch.py</pre>
+<p>第二条命令需要先按实验包README安装PyTorch。</p>
+<a href="codepath-tests.zip" download>下载测试包</a> · <a href="model-labs.zip" download>下载AI实验包</a></section>
+<section class="project-stage"><h2>浏览器交互验收</h2><ul>
+<li>首页AI学习入口、先修课程跳转、课前词典正常；概念课隐藏代码编辑器。</li>
+<li>桥接小游戏答错与答对反馈、答对奖励5XP正常；概念测验未完成自查时不会误判通过。</li>
+<li>rag-01空实现未通过，正确实现通过真实Python运行检查。</li>
+<li>375像素手机视口复核：首页、AI数学目录、RAG先修课无横向溢出；检查页面未发现控制台错误。</li>
+</ul></section>
+<section class="project-stage"><h2>尚未验证的范围</h2><ul>
+<li>真实大模型部署、GPU LoRA / QLoRA训练未实测；CPU教学实验不能代替真实模型训练验收。</li>
+<li>自动化测试覆盖已列出的行为，不等同于不存在Bug、生产负载验证或全面安全审计。</li>
+<li>尚未进行真人零基础学习效果评估；课程完成与XP不能证明已经完全熟练。</li>
+</ul></section></main></body></html>

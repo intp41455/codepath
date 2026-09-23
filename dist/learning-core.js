@@ -6,9 +6,9 @@
   function validDay(s){return typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&!Number.isNaN(Date.parse(s))&&new Date(s).toISOString().slice(0,10)===s}
   function indexForDay(day,size){if(!validDay(day)||size<1)throw Error('Invalid day or bank');return Math.floor(Date.parse(day)/86400000)%size}
   function reward(ledger,day,id){if(!validDay(day)||!id)throw Error('Invalid reward');return own(object(ledger),day)?{...ledger}:{...object(ledger),[day]:{id,xp:40}}}
-  function xp(state,lessons){return lessons.filter(l=>state.done?.[l.id]).length*20+Object.keys(object(state.dailyRewards)).length*40}
+  function xp(state,lessons){return lessons.filter(l=>state.done?.[l.id]).length*20+Object.keys(object(state.dailyRewards)).length*40+Object.values(object(state.gameProgress)).filter(g=>g?.completed).length*60+Object.values(object(state.miniDone)).filter(Boolean).length*5}
   function normalize(raw,lessons,projects,today=dayKey()){
-    const s=object(raw),out={version:1,current:lessons.some(l=>l.id===s.current)?s.current:lessons[0].id,done:{},drafts:{},notes:{},checks:{},projectChecks:{},viewedSolutions:{},projectEvidence:{},dailyRewards:{},dailyDrafts:{},mastery:{}};
+    const s=object(raw),first=lessons.find(l=>l.id==='pc-01')||lessons[0],out={version:1,onboardingVersion:2,current:s.onboardingVersion===2&&lessons.some(l=>l.id===s.current)?s.current:first.id,done:{},drafts:{},notes:{},checks:{},projectChecks:{},viewedSolutions:{},projectEvidence:{},dailyRewards:{},dailyDrafts:{},mastery:{},gameProgress:{},miniDone:{},wrongBook:[]};
     for(const l of lessons){
       const d=own(object(s.done),l.id);if(typeof d==='string'&&!Number.isNaN(Date.parse(d)))out.done[l.id]=d;
       for(const k of ['notes','drafts']){const v=own(object(s[k]),l.id);if(typeof v==='string')out[k][l.id]=v.slice(0,100000)}
@@ -18,9 +18,12 @@
     for(const p of projects){const c=own(object(s.projectChecks),p.id);if(Array.isArray(c))out.projectChecks[p.id]=c.slice(0,p.checks.length).map(x=>x===true);const e=own(object(s.projectEvidence),p.id);if(Array.isArray(e))out.projectEvidence[p.id]=e.slice(0,5).map(r=>({score:Math.max(0,Math.min(3,Math.floor(Number(r?.score)||0))),evidence:typeof r?.evidence==='string'?r.evidence.slice(0,20000):''}))}
     for(const [d,v] of Object.entries(object(s.dailyRewards))){if(validDay(d)&&d<=today&&typeof v?.id==='string')out.dailyRewards[d]={id:v.id.slice(0,100),xp:40}}
     for(const [d,v] of Object.entries(object(s.dailyDrafts))){if(validDay(d)&&typeof v==='string')out.dailyDrafts[d]=v.slice(0,100000)}
+    for(const [id,v] of Object.entries(object(s.gameProgress)).slice(0,100)){if(typeof id==='string'&&v&&typeof v==='object')out.gameProgress[id.slice(0,100)]={completed:v.completed===true,stars:Math.max(0,Math.min(3,Math.floor(Number(v.stars)||0))),bestStreak:Math.max(0,Math.min(999,Math.floor(Number(v.bestStreak)||0))),attempts:Math.max(0,Math.min(999,Math.floor(Number(v.attempts)||0)))} }
+    for(const [id,v] of Object.entries(object(s.miniDone)).slice(0,300)){if(v===true)out.miniDone[id.slice(0,100)]=true}
+    if(Array.isArray(s.wrongBook))out.wrongBook=s.wrongBook.slice(-100).map(v=>({game:String(v?.game||'').slice(0,100),prompt:String(v?.prompt||'').slice(0,500),answer:String(v?.answer||'').slice(0,300),at:typeof v?.at==='string'?v.at.slice(0,40):''}));
     return out;
   }
-  function merge(a,b,lessons,projects){const n=normalize(b,lessons,projects),out={...a};for(const k of ['done','drafts','notes','checks','projectChecks','viewedSolutions','projectEvidence','dailyRewards','dailyDrafts','mastery'])out[k]={...a[k],...n[k]};return normalize(out,lessons,projects)}
+  function merge(a,b,lessons,projects){const n=normalize(b,lessons,projects),out={...a};for(const k of ['done','drafts','notes','checks','projectChecks','viewedSolutions','projectEvidence','dailyRewards','dailyDrafts','mastery','gameProgress','miniDone'])out[k]={...a[k],...n[k]};out.wrongBook=[...(a.wrongBook||[]),...n.wrongBook];return normalize(out,lessons,projects)}
   const rules=[
     {id:'eval',severity:'高',re:/\b(?:eval|exec)\s*\(/,why:'动态执行字符串；外部输入可能变成代码。',fix:'把允许的操作映射到明确的函数；禁止把用户输入拼进代码。'},
     {id:'shell',severity:'高',re:/shell\s*=\s*True|os\.system\s*\(|child_process|\bexecSync\s*\(/,why:'命令执行入口；需检查命令注入及权限。',fix:'使用参数数组和命令白名单，限制执行身份及超时。'},

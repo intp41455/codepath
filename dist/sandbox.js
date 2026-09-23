@@ -3,10 +3,7 @@ class IsolatedRunner{
   constructor(){this.closed=false;this.frame=null;this.onmessage=null;this.onerror=null;this.id=crypto.randomUUID()}
   async postMessage(payload){try{
     const isJS=['javascript','typescript'].includes(payload.kind);
-    const PYODIDE_BASE=new URL('pyodide/',location.href).href;
-    const PYODIDE_ORIGIN=new URL(PYODIDE_BASE).origin;
     let source=await fetch(isJS?'js-runner.js':'runner.js').then(r=>{if(!r.ok)throw Error('运行器下载失败');return r.text()});
-    if(!isJS)source=source.replaceAll('__PYODIDE_BASE__',PYODIDE_BASE);
     if(payload.kind==='typescript'){
       const base='vendor/typescript/';
       const TS_CDN='https://cdn.jsdelivr.net/npm/typescript@5.9.3/lib/typescript.js';
@@ -29,7 +26,7 @@ class IsolatedRunner{
     if(this.closed)return;
     const f=document.createElement('iframe');this.frame=f;f.hidden=true;f.setAttribute('sandbox','allow-scripts');f.setAttribute('title','隔离的代码执行器');
     const relay=`const id=${JSON.stringify(this.id)};let w;addEventListener('message',e=>{if(e.source!==parent||e.data.id!==id||w)return;w=new Worker(URL.createObjectURL(new Blob([e.data.source],{type:'text/javascript'})));w.onmessage=e=>parent.postMessage({id,data:e.data},'*');w.onerror=()=>parent.postMessage({id,error:true},'*');w.postMessage(e.data.payload)});parent.postMessage({id,ready:true},'*');`;
-    const cdn=isJS?'':' '+PYODIDE_ORIGIN;
+    const cdn=isJS?'':' https://cdn.jsdelivr.net';
     f.srcdoc=`<!doctype html><meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' blob:${cdn}; worker-src blob:; connect-src${cdn||" 'none'"};"><script>${relay}<\/script>`;
     this.listener=e=>{if(e.source!==f.contentWindow||e.data?.id!==this.id)return;if(e.data.ready){f.contentWindow.postMessage({id:this.id,source,payload},'*')}else if(e.data.error){this.onerror?.(Error('隔离运行环境失败'))}else this.onmessage?.({data:e.data.data})};
     window.addEventListener('message',this.listener);document.body.append(f);

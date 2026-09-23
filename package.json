@@ -1,10 +1,10 @@
 {
   "name": "codepath",
-  "version": "2.0.0",
-  "description": "循码 Codepath —— 面向零基础学习者的中文编程实践课堂：17 条学习路径、129 个小节、14 个综合项目，浏览器内真实运行 Python / SQL / JS / TS。",
+  "version": "4.0.0",
+  "description": "循码 Codepath：30 个模块、232 个小节、30 节先修衔接课、17 个项目，含 AI 数学、神经网络、深度学习、NLP、部署、微调、LoRA、QLoRA、知识图谱与 RAG。",
   "license": "MIT",
   "author": "intp41455",
-  "homepage": "https://github.com/intp41455/codepath",
+  "homepage": "https://codepath-intpj-0922.bright-melon-8461.chatgpt.site/",
   "private": false,
   "keywords": [
     "编程教学",
@@ -24,8 +24,8 @@
   "scripts": {
     "start": "node scripts/serve.cjs",
     "test": "node --test tests/regression.cjs",
-    "test:python": "python tests/exercises.py && python tests/runtime-python.py",
-    "test:all": "node --test tests/regression.cjs && python tests/exercises.py && python tests/runtime-python.py",
+    "test:python": "node scripts/run-python-tests.cjs",
+    "test:all": "node --test tests/regression.cjs && node scripts/run-python-tests.cjs",
     "build:test-bundle": "python scripts/build-test-bundle.py"
   },
   "engines": {
