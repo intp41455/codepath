@@ -13,8 +13,8 @@
  * - app.js save() 末尾调用 window.CodepathAuth?.pushProgress?.(state)
  */
 (function(){
-  const SUPABASE_URL='https://zknmsszhupuvhtnkzwoo.supabase.co';
-  const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inprbm1zc3podXB1dmh0bmt6d29vIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODUzNTAwNjYsImV4cCI6MjEwMDkyNjA2Nn0.bNPQi-e-JonSJUN4vHweMVMhpmWwq4QPvTtIY3KBN1w';
+  const SUPABASE_URL='https://jhccytzjmwetdepbqife.supabase.co';
+  const SUPABASE_ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpoY2N5dHpqbXdldGRlcGJxaWZlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwMzkwMDIsImV4cCI6MjEwNTYxNTAwMn0.kjzPIqH08hU9f_xUjCXd-UoWZZUNMKse-klHu2jPRTw';
   const AUTH_HEADS={'apikey':SUPABASE_ANON,'Authorization':'Bearer '+SUPABASE_ANON,'Content-Type':'application/json'};
   const REM_KEY='codepath-auth';
   let user=null,accessToken=null,refreshToken=null;
