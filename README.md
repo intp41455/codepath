@@ -5,7 +5,7 @@
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![no-build](https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg)](#本地运行)
 
-> **在线体验**：[循码网站](https://codepath-intpj-0922.bright-melon-8461.chatgpt.site/)（首次运行 Python/SQL 需联网加载浏览器执行环境）
+> **在线体验**：[循码网站](https://codepath-academy.pages.dev/)（免费开放；首次运行 Python/SQL 需联网加载浏览器执行环境）
 
 **30 条学习路径 · 232 个小节 · 30 节先修衔接课 · 6 个游戏关卡 · 17 个综合项目 · 14 个每日挑战**
 
