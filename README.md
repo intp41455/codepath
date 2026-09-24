@@ -1,15 +1,72 @@
 # 循码 Codepath
 
-> 面向零基础学习者的中文实践课堂。讲一个 → 练一个 → 测一个 → 复一个，把「看懂了」变成「我会了」。
+<p align="center">
+  <b>浏览器打开就能跑真代码的中文编程课堂 · 零安装 · 纯静态 · MIT 开源</b><br>
+  <sub>Python · SQL · JavaScript · TypeScript 全部在浏览器内真实运行</sub>
+</p>
 
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![no-build](https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg)](#本地运行)
+<p align="center">
+  <a href="https://codepath-academy.pages.dev/"><img src="https://img.shields.io/badge/🚀_在线体验-立即开始-6de2b5?style=for-the-badge" alt="在线体验"></a>
+  <a href="https://github.com/intp41455/codepath/stargazers"><img src="https://img.shields.io/github/stars/intp41455/codepath?style=for-the-badge&color=f5b301&label=⭐_Star" alt="Star"></a>
+</p>
 
-> **在线体验**：[循码网站](https://codepath-academy.pages.dev/)（免费开放；首次运行 Python/SQL 需联网加载浏览器执行环境）
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT">
+  <img src="https://img.shields.io/badge/build-none%20%7C%20pure%20static-8e44ad.svg" alt="no build">
+  <img src="https://img.shields.io/badge/dependencies-zero-2ea44f.svg" alt="zero deps">
+  <img src="https://img.shields.io/badge/Python-Pyodide%20wasm-3776ab.svg" alt="Pyodide">
+  <img src="https://img.shields.io/badge/TypeScript-5.9.3%20embedded-3178c6.svg" alt="TS">
+  <img src="https://img.shields.io/badge/tests-63%2F63%20passing-brightgreen.svg" alt="tests">
+</p>
+
+> **在线体验**：[codepath-academy.pages.dev](https://codepath-academy.pages.dev/)（免费开放；首次运行 Python/SQL 需联网加载浏览器执行环境）
+
+## ⭐ 点个 Star，免费解锁全部高级功能
+
+> **这是一个纯静态、零后端的项目。您的每一个 Star，都是它被更多人看见的唯一途径。**
+
+点亮右上角 **Star** 后，即可**免费解锁站内全部高级模块**（AI 应用开发路线、大模型部署/微调/LoRA/QLoRA/RAG 等 10 个进阶模块）。
+
+**领取步骤（30 秒）**：
+
+1. 点本仓库右上角 **⭐ Star**
+2. [**新建 issue 留言你的 GitHub 用户名**](https://github.com/intp41455/codepath/issues/new?title=%E7%94%B3%E9%A2%86%E8%A7%A3%E9%94%81%E7%A0%81&body=%E6%88%91%E5%B7%B2%E7%82%B9%20star%EF%BC%8C%E6%B1%82%E8%A7%A3%E9%94%81%E7%A0%81%20%F0%9F%99%8F%20%EF%BC%88GitHub%20%E7%94%A8%E6%88%B7%E5%90%8D%EF%BC%9A%EF%BC%89)（一键跳转，已预填模板）
+3. 收到解锁码后，在站点右上角 **⭐ 按钮** 里填入 → 立即解锁
+
+<sub>解锁码仅在本机浏览器校验，不上传任何服务器。原理与算法见 [`dist/star-unlock.js`](dist/star-unlock.js)（纯前端校验和，开源可审计）。</sub>
+
+---
 
 **30 条学习路径 · 232 个小节 · 30 节先修衔接课 · 6 个游戏关卡 · 17 个综合项目 · 14 个每日挑战**
 
 课程在浏览器里真实运行 Python、SQL、JavaScript、TypeScript（Pyodide + SQLite + 真实 TS 5.9.3 编译器），并配有两套「拿证据说话」的毕业验收：接管自己的 AI 辅助项目，以及分析和修改陌生 GitHub 项目。
+
+## 为什么值得 Star（技术亮点）
+
+| 亮点 | 实现 |
+|---|---|
+| **真 Python 在浏览器跑** | 自托管 Pyodide（wasm 版 CPython），不走公共 CDN，无后端依赖 |
+| **真 TypeScript 编译检查** | 内嵌 TS 5.9.3 编译器，练习做 strict 检查，不是假高亮 |
+| **真 SQL 可玩坏** | 每道题重建独立 SQLite 练习库，改坏了下次运行自动恢复 |
+| **断言式判题** | 67 Python + 7 SQL 题带真实行为断言，能分辨「没写 / 写错 / 写对」，写错再分「答案错 / 业务逻辑错」 |
+| **零构建、零依赖** | 纯静态站，`npm start` 即跑，无 `npm install`、无打包器 |
+| **自带模型接口（BYOK）** | 右上角 ⚙ 可接 OpenAI / DeepSeek / Ollama 本地，走标准 OpenAI 兼容协议，Key 只存浏览器 |
+| **昼夜双主题** | 跟随系统偏好，防闪烁（anti-FOUC），一键切换 |
+| **63/63 回归测试** | `node --test tests/regression.cjs` 可复现 |
+
+### 架构一览
+
+```
+浏览器
+ ├─ Pyodide (wasm CPython, 自托管)  → Python 练习真实执行
+ ├─ SQLite (每题重建)               → SQL 练习真实执行
+ ├─ 内嵌 TS 5.9.3 编译器            → TypeScript strict 检查
+ ├─ 隔离 iframe + Worker           → JS/TS 安全执行
+ └─ localStorage / Supabase Auth   → 进度本地保存 / 跨设备同步（可选）
+        ↑
+    纯静态托管（Cloudflare Pages）——无服务端逻辑
+```
+
 
 ## v4 先修与 AI 路线
 
@@ -83,6 +140,8 @@ codepath/
 │  ├─ learning-core.js    # 纯业务逻辑（XP/去重/归一/扫描），被页面与测试共享
 │  ├─ runner.js / js-runner.js / sandbox.js   # 隔离执行器（Pyodide / JS·TS / 不透明 iframe+Worker）
 │  ├─ app.js / learning-hub.js / capstones.js / export-dialog.js    # 路由、审核、毕业、导出
+│  ├─ llm-client.js       # 通用模型接口（BYOK，OpenAI 兼容协议）
+│  ├─ star-unlock.js      # Star 权益解锁（纯前端校验和，开源可审计）
 │  ├─ test-report.html    # 实测报告
 │  ├─ codepath-tests.zip  # 可下载测试包（build-test-bundle.py 生成）
 │  └─ vendor/typescript/  # 随仓库分发的 TS 5.9.3 编译器
@@ -106,4 +165,20 @@ Python 基础 → 数据结构与算法 → SQL 与数据库 → 开发工具与
 ## 许可
 
 本项目按 [MIT 许可证](LICENSE) 开源。随仓库分发的 TypeScript 编译器保留其原有许可（`dist/vendor/typescript/LICENSE.txt`）。
+
+## 支持这个项目
+
+如果循码对你有帮助，或者你觉得「浏览器里跑真代码」这件事值得被更多人看到：
+
+- ⭐ [**点个 Star**](https://github.com/intp41455/codepath/stargazers) —— 最直接的支持，还能免费解锁全部高级模块
+- 🐛 [提 issue](https://github.com/intp41455/codepath/issues) 反馈问题或建议（我 24 小时内回）
+- 🔀 Fork 改造，MIT 协议随便拿去用
+- 📣 推荐给正在学编程的朋友
+
+---
+
+<p align="center">
+  <sub>循码 CODEPATH · 每一次动手，都离独立开发更近一点。</sub><br>
+  <sub><a href="https://codepath-academy.pages.dev/">在线体验</a> · <a href="https://github.com/intp41455/codepath">GitHub</a></sub>
+</p>
 
