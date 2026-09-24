@@ -130,8 +130,7 @@
 [data-theme="dark"] .audit-grid select{background:#1a1d24 !important}
 [data-theme="dark"] .finding{background:#1a1d24 !important}
 [data-theme="dark"] .audit-clear{background:#23342b !important}
-[data-theme="dark"] /* Beginner-first learning and game lab */
-.zero-start{background:linear-gradient(135deg,#131722 0%,#1a1d24 100%) !important}
+[data-theme="dark"] .zero-start{background:linear-gradient(135deg,#131722 0%,#1a1d24 100%) !important}
 [data-theme="dark"] .zero-features span{background:#1a1d24 !important}
 [data-theme="dark"] .game-home-card{background:linear-gradient(135deg,#131722 0%,#1a1d24 100%) !important}
 [data-theme="dark"] .game-rules div{background:#1a1d24 !important}
