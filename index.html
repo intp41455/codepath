@@ -1,11 +1,65 @@
 <!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="refresh" content="0; url=dist/">
-<title>循码 Codepath</title>
-</head>
-<body>
-<p>正在跳转到 <a href="dist/">循码 Codepath</a>…</p>
-</body>
-</html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#111d35"><meta name="description" content="循码：从电脑开关机级别开始，通过小步讲解、互动游戏、代码练习和项目掌握编程与 AI 应用开发。"><title>循码 Codepath · 你的编程实践课堂</title><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%23111d35'/%3E%3Cpath d='m15 12-8 8 8 8m10-16 8 8-8 8' fill='none' stroke='%236de2b5' stroke-width='3'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"><script src="curriculum.js" defer></script><script src="foundations.js" defer></script><script src="backend.js" defer></script><script src="ai-lessons.js" defer></script><script src="mastery.js" defer></script><script src="projects.js" defer></script><script src="new-courses.js" defer></script><script src="beginner-courses.js" defer></script><script src="new-projects.js" defer></script><script src="prerequisites.js" defer></script><script src="model-courses.js" defer></script><script src="model-projects.js" defer></script><script src="prerequisite-ui.js" defer></script><script src="games-data.js" defer></script><script src="learning-core.js" defer></script><script src="daily.js" defer></script><script src="sandbox.js" defer></script><script src="game-lab.js" defer></script><script src="learning-hub.js" defer></script><script src="export-dialog.js" defer></script><script src="auth.js" defer></script><script src="app.js" defer></script><script src="capstones.js" defer></script></head>
+<body><a href="#main" class="skip">跳到学习内容</a><div class="app"><aside class="sidebar"><a class="brand" href="#home"><span class="brand-icon">〈/〉</span><span>循码<small>CODEPATH</small></span></a><p class="nav-label">我的学习空间</p><nav aria-label="主导航"><a href="#home" data-nav="home"><span>⌂</span>今日学习</a><a href="#learn" data-nav="learn"><span>⌘</span>学习工作台</a><a href="#path" data-nav="path"><span>◇</span>学习路径</a><a href="#games" data-nav="games"><span>★</span>闯关乐园</a><a href="#projects" data-nav="projects"><span>▧</span>实战项目</a><a href="#audit" data-nav="audit"><span>✓</span>审核与测试</a><a href="#notes" data-nav="notes"><span>▤</span>我的笔记</a><a href="#progress" data-nav="progress"><span>◷</span>学习记录</a></nav><div class="side-bottom"><div class="daily"><span class="eyebrow">一点点，也算向前</span><b>今天学会一个小知识</b><p>看懂 → 猜测 → 点击 → 动手 → 复盘</p><div class="tiny-track"><i id="side-progress"></i></div><small id="side-count">从鼠标和窗口开始</small></div><div id="auth-area" class="auth-area"></div><div class="profile"><span class="avatar">我</span><div><b>未来的开发者</b><small>零基础 · 小步实践计划</small></div></div></div></aside><div class="surface"><header class="topbar"><div class="breadcrumb" id="breadcrumb">我的学习 <span>/</span> 今日学习</div><div class="top-actions"><span class="save-state" id="save-state">本机自动保存</span><button class="icon-button" id="help-button" title="学习与运行说明" aria-label="学习与运行说明">?</button><button class="icon-button" id="llm-settings-button" title="连接通用模型（自带 Key）" aria-label="模型设置">⚙</button></div></header><main id="main" tabindex="-1"></main><footer>循码 CODEPATH <span>每一次动手，都离独立开发更近一点。</span><button id="export-progress">备份学习进度</button><label class="import-label">导入备份<input type="file" id="import-progress" accept="application/json" hidden></label><nav class="footer-links" aria-label="页面" style="margin-left:14px"><a href="privacy.html" style="color:#6de2b5;text-decoration:none;opacity:.72">隐私</a><span style="opacity:.4">&middot;</span><a href="terms.html" style="color:#6de2b5;text-decoration:none;opacity:.72">协议</a><span style="opacity:.4">&middot;</span><a href="about.html" style="color:#6de2b5;text-decoration:none;opacity:.72">关于</a></nav></footer></div></div><div class="toast" id="toast" role="status"></div><dialog id="help-dialog"><div class="dialog-head"><h2>怎样使用循码</h2><button class="icon-button" id="close-help" aria-label="关闭说明">×</button></div><p>从“零号训练营”第一课开始。不会打字也没关系：先认识鼠标、窗口和文件夹，再玩不写代码的小游戏，最后才进入第一行 Python。</p><ul><li><b>卡住时：</b>点“卡住了，点这里自救”。先只解决眼前一个符号或动作，不要求一次记住。</li><li><b>闯关乐园：</b>答错会扣爱心并解释原因；爱心归零可立即重来。星星与 XP 只是练习记录。</li><li><b>Python / SQL：</b>首次运行需要联网下载浏览器运行环境。代码在当前浏览器执行；SQL 使用每次重建的练习数据库。</li><li><b>JavaScript / TypeScript：</b>隔离执行 JavaScript；TypeScript 先做 strict 编译检查。DOM 与真实网络项目在本机实践。</li><li><b>Linux / Java / 框架：</b>按课内步骤在本机真实运行，网页提供知识测验和人工验收清单，不会假装已经编译或部署。</li><li><b>Agent：</b>基础课使用明确标注的模拟模型，先练习流程、工具和边界；真实模型接入在项目中完成，可能产生服务费用。</li><li><b>学习记录：</b>仅保存在当前浏览器，清理网站数据会丢失。定期点击底部“备份学习进度”。</li></ul><p class="muted">框架安装时使用课内官方入口选择兼容版本。</p></dialog><dialog id="auth-dialog"><div class="dialog-head"><h2>登录循码</h2><button class="icon-button" id="close-auth" aria-label="关闭">×</button></div><p class="auth-sub">登录后恢复你的跨设备进度</p><form id="auth-form"><input type="hidden" id="auth-mode" value="login"><input id="auth-email" type="email" placeholder="邮箱" required><input id="auth-password" type="password" placeholder="密码（至少 6 位）" required minlength="6"><label class="auth-remember"><input type="checkbox" id="auth-remember" checked> 记住我（本机）</label><p id="auth-msg" role="alert" aria-live="polite"></p><div class="auth-actions"><button type="button" class="secondary" id="auth-toggle">没有账号？点我注册</button><button type="button" class="primary" id="auth-submit">登录</button></div></form><p class="muted">登录后进度自动同步到云端；未登录则仅保存在本机浏览器。</p></dialog><div id="llm-ask-area" class="llm-ask-area" hidden>
+  <div class="llm-ask-head"><b>问问 AI 助手</b><small id="llm-ask-source">未连接模型 · 本地演示</small></div>
+  <div class="llm-ask-row"><input id="llm-ask-input" placeholder="问一个小问题，或粘贴一段代码让模型解释…" autocomplete="off"><button id="llm-ask-btn" class="primary">问问</button></div>
+  <div id="llm-ask-output" class="llm-ask-output"></div>
+</div>
+<dialog id="llm-settings-dialog"><div class="dialog-head"><h2>连接通用模型</h2><button class="icon-button" id="close-llm-settings" aria-label="关闭">×</button></div>
+<p class="auth-sub">填一个 OpenAI 兼容端点（OpenAI / DeepSeek / Moonshot / Ollama 本地 / 中转站）。<b>Key 只保存在你的浏览器本地，不会发送到循码服务器。</b></p>
+<form id="llm-settings-form">
+<select id="llm-provider" aria-label="服务商">
+  <option value="openai">OpenAI</option>
+  <option value="deepseek">DeepSeek</option>
+  <option value="ollama">Ollama 本地</option>
+  <option value="custom">自定义</option>
+</select>
+<input id="llm-baseurl" type="text" placeholder="https://api.deepseek.com/v1" autocomplete="off">
+<input id="llm-model" type="text" placeholder="deepseek-chat" autocomplete="off">
+<input id="llm-apikey" type="password" placeholder="API Key（Ollama 可留空）" autocomplete="off">
+<input id="llm-temperature" type="number" step="0.1" min="0" max="2" placeholder="temperature（可选，默认 0.7）">
+<p id="llm-settings-msg" role="alert" aria-live="polite"></p>
+<div class="auth-actions"><button type="button" class="secondary" id="llm-test-btn">测试连接</button><button type="submit" class="primary">保存</button></div>
+</form></dialog>
+<script src="llm-client.js" defer></script>
+<script defer>
+(function(){
+  var $ = function(s){return document.querySelector(s)};
+  function showToast(s){var t=$("#toast");if(!t)return;t.textContent=s;t.classList.add("visible");clearTimeout(showToast._t);showToast._t=setTimeout(function(){t.classList.remove("visible")},3200)}
+  function init(){
+    if(!window.llmClient)return;
+    var C=window.llmClient;
+    var dlg=$("#llm-settings-dialog");
+    var askArea=$("#llm-ask-area");var src=$("#llm-ask-source");
+    function fillProvider(v){var p=C.providers[v];if(!p)return;$("#llm-baseurl").value=p.baseUrl;$("#llm-model").value=p.model;}
+    function loadToForm(){var c=C.load();$("#llm-provider").value=c.provider||"openai";$("#llm-baseurl").value=c.baseUrl||"";$("#llm-model").value=c.model||"";$("#llm-apikey").value=c.apiKey||"";$("#llm-temperature").value=(c.temperature!=null?c.temperature:"");}
+    function updateBadge(){var c=C.load();src.textContent=(c.apiKey||c.provider==="ollama")?("已连接："+(c.model||"模型")):"未连接模型 · 本地演示";}
+    $("#llm-settings-button").onclick=function(){loadToForm();dlg.showModal()};
+    $("#close-llm-settings").onclick=function(){dlg.close()};
+    $("#llm-provider").onchange=function(){fillProvider(this.value)};
+    $("#llm-test-btn").onclick=async function(){
+      var c={provider:$("#llm-provider").value,baseUrl:$("#llm-baseurl").value,model:$("#llm-model").value,apiKey:$("#llm-apikey").value,temperature:$("#llm-temperature").value===""?0.7:parseFloat($("#llm-temperature").value)};
+      $("#llm-settings-msg").textContent="正在测试…";$("#llm-settings-msg").style.color="#687386";
+      var r=await C.test(c);$("#llm-settings-msg").textContent=r.message;$("#llm-settings-msg").style.color=r.ok?"#178568":"#b3261e";
+    };
+    $("#llm-settings-form").onsubmit=async function(e){e.preventDefault();
+      var c={provider:$("#llm-provider").value,baseUrl:$("#llm-baseurl").value.trim(),model:$("#llm-model").value.trim(),apiKey:$("#llm-apikey").value.trim(),temperature:$("#llm-temperature").value===""?0.7:parseFloat($("#llm-temperature").value)};
+      C.save(c);updateBadge();dlg.close();showToast("模型设置已保存");
+    };
+    // 问问 AI 助手演示区
+    askArea.hidden=false;updateBadge();
+    $("#llm-ask-btn").onclick=async function(){
+      var q=$("#llm-ask-input").value.trim();if(!q)return;
+      $("#llm-ask-output").textContent="思考中…";$("#llm-ask-btn").disabled=true;
+      var r=await window.llmChat({messages:[{role:"user",content:"你是循码的学习助手，用中文简短、准确回答，面向零基础学习者：\n"+q}]});
+      $("#llm-ask-output").textContent=r.text;$("#llm-ask-btn").disabled=false;
+      src.textContent=r.source==="model"?"来自模型 · "+((C.load().model)||""):"本地演示（未连接模型）";
+    };
+    $("#llm-ask-input").onkeydown=function(e){if(e.key==="Enter")$("#llm-ask-btn").click()};
+  }
+  if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);else init();
+})();
+</script>
+</body></html>
+
+
