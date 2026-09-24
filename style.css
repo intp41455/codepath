@@ -28,3 +28,48 @@
 .llm-ask-row{display:flex;gap:8px}.llm-ask-row input{flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink)}.llm-ask-row input:focus{outline:2px solid var(--mint);border-color:var(--green)}
 .llm-ask-output{margin-top:12px;padding:12px;min-height:20px;background:#f5f7fa;border-radius:10px;font-size:13px;line-height:1.7;color:var(--ink);white-space:pre-wrap}
 #llm-settings-dialog{border:none;border-radius:14px;max-width:440px;width:calc(100vw - 32px);padding:22px;background:#fff;color:var(--ink);box-shadow:0 18px 60px rgba(0,0,0,.25)}#llm-settings-dialog::backdrop{background:rgba(17,29,53,.42);backdrop-filter:blur(2px)}#llm-settings-dialog h2{font-size:20px}#llm-settings-dialog .auth-sub{font-size:13px;color:var(--muted);margin:0 0 14px;line-height:1.6}#llm-settings-form select,#llm-settings-form input{width:100%;margin:8px 0;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;color:var(--ink);background:#fff}#llm-settings-form input:focus{outline:2px solid var(--mint);border-color:var(--green)}#llm-settings-msg{min-height:16px;font-size:13px;margin:6px 0}#llm-settings-dialog .auth-actions{display:flex;gap:10px;margin-top:14px}#llm-settings-dialog .auth-actions button{flex:1}
+
+/* ===== Day / Night mode toggle (dark overrides) =====
+   Driven by <html data-theme="dark">. Light mode untouched.
+   Strategy: flip :root vars + override hardcoded light surfaces.
+   Sidebar (.sidebar bg --navy) and code editor (.editor #152136) are
+   already dark — no change needed. Only the light "paper" area flips. */
+[data-theme="dark"]{
+  --bg:#0d1117;
+  --ink:#e6e8ee;
+  --muted:#8b96a8;
+  --line:#2d3548;
+  --navy:#0a0f1a;
+  --green:#2dbfa6;
+  --mint:#5fd4a8;
+  --purple:#8b70d4;
+  --white:#1a1d24;
+  color-scheme:dark;
+}
+[data-theme="dark"] body{background:#0d1117;color:#e6e8ee}
+[data-theme="dark"] .surface{background:transparent}
+[data-theme="dark"] .topbar{border-color:#2d3548}
+/* White card surfaces → dark panels */
+[data-theme="dark"] .lesson-panel,
+[data-theme="dark"] .auth-area,
+[data-theme="dark"] .concept-pill,
+[data-theme="dark"] .lesson-orientation,
+[data-theme="dark"] .llm-ask-area{background:#1a1d24 !important;border-color:#2d3548 !important}
+/* #fff hardcoded backgrounds */
+[data-theme="dark"] [style*="background:#fff"],
+[data-theme="dark"] [style*="background: #fff"]{background:#1a1d24 !important}
+[data-theme="dark"] .bg-white{background-color:#1a1d24 !important}
+/* #f5f7fa hardcoded backgrounds (outside :root) */
+[data-theme="dark"] .llm-ask-output{background:#131722 !important}
+[data-theme="dark"] [style*="background:#f5f7fa"],
+[data-theme="dark"] [style*="background: #f5f7fa"]{background:#131722 !important}
+/* #edf0f3 surfaces */
+[data-theme="dark"] [style*="background:#edf0f3"],
+[data-theme="dark"] [style*="background: #edf0f3"]{background:#131722 !important}
+/* Scrollbar dark */
+[data-theme="dark"] ::-webkit-scrollbar-thumb{background:rgba(230,232,238,0.18)}
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover{background:rgba(230,232,238,0.3)}
+/* Theme toggle button */
+.theme-toggle-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--ink);cursor:pointer;transition:all .2s}
+.theme-toggle-btn:hover{background:var(--line);border-color:var(--green)}
+.theme-toggle-btn svg{width:16px;height:16px}
