@@ -39,6 +39,23 @@
 
 **30 条学习路径 · 232 个小节 · 30 节先修衔接课 · 6 个游戏关卡 · 17 个综合项目 · 14 个每日挑战**
 
+## 🖼️ 界面一览
+
+| 闯关乐园（先玩起来，不写代码） | 首页 · 今日学习 |
+|:---:|:---:|
+| ![闯关乐园](docs/screenshots/cp-02-games.png) | ![首页](docs/screenshots/cp-01-home.png) |
+
+| 学习路径 | 每日挑战 |
+|:---:|:---:|
+| ![学习路径](docs/screenshots/cp-03-path.png) | ![每日挑战](docs/screenshots/cp-04-daily.png) |
+
+| 实战项目 | 手机端 |
+|:---:|:---:|
+| ![实战项目](docs/screenshots/cp-05-projects.png) | ![手机端](docs/screenshots/cp-06-mobile.png) |
+
+> 📖 完整功能说明：[docs/使用文档.md](docs/使用文档.md) · 在线文档站：[codepath-docs.pages.dev](https://codepath-docs.pages.dev/)
+
+
 课程在浏览器里真实运行 Python、SQL、JavaScript、TypeScript（Pyodide + SQLite + 真实 TS 5.9.3 编译器），并配有两套「拿证据说话」的毕业验收：接管自己的 AI 辅助项目，以及分析和修改陌生 GitHub 项目。
 
 ## 为什么值得 Star（技术亮点）
